@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("PedidoPagamento")]
+    [Route("Pedido")]
     public class PedidoPagamentoController : ControllerBase
     {
         private readonly Application.Interfaces.UseCases.IPedidoPagamentoUseCase _pedidoPagamentoUseCase;
@@ -20,7 +20,7 @@ namespace API.Controllers
         /// Lista o pedido pagamento passado por parâmetro
         /// </summary>
         [HttpGet]
-        [Route("pedido/{pedidoId}")]
+        [Route("{pedidoId}")]
         [ProducesResponseType(typeof(Application.DTOs.Output.PedidoPagamento), 200)]
         public ActionResult<IEnumerable<Application.DTOs.Output.PedidoPagamento>> Get(int pedidoId)
         {
