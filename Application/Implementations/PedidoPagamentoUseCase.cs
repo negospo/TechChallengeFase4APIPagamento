@@ -17,11 +17,6 @@ namespace Application.Implementations
             this._iPaymentUseCase = iPaymentUseCase;
         }
 
-        public bool UpdatePaymentStatus(int pedidoId, PagamentoStatus status)
-        {
-            throw new NotImplementedException();
-        }
-
         PedidoPagamento IPedidoPagamentoUseCase.Get(int pedidoId)
         {
             var result = this._pedidoPagamentoRepository.Get(pedidoId);
@@ -58,6 +53,12 @@ namespace Application.Implementations
             entity.AtualizaCodigoTransacao(processResult.CodigoTransacao);
 
             return _pedidoPagamentoRepository.Save(entity);
+        }
+
+
+        public bool Update(int pedidoId, PagamentoStatus status)
+        {
+            return _pedidoPagamentoRepository.Update(pedidoId, (Domain.Enums.PagamentoStatus)status);
         }
     }
 }

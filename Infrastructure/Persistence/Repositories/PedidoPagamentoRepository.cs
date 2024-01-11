@@ -41,10 +41,8 @@ namespace Infrastructure.Persistence.Repositories
         }
 
 
-        public bool UpdatePaymentStatus(int pedidoId, Domain.Enums.PagamentoStatus status)
+        public bool Update(int pedidoId, Domain.Enums.PagamentoStatus status)
         {
-            
-
             string query = "update pedido_pagamento set pagamento_status_id = @pagamento_status_id where pedido_id = @pedidoId";
             int affected = Database.Connection().Execute(query, new
             {
