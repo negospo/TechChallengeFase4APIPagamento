@@ -23,14 +23,14 @@ namespace API.Controllers
         [Route("updatePaymentStatus")]
         [ProducesResponseType(typeof(bool), 200)]
         [CustonValidateModel]
-        public ActionResult<bool> UpdatePaymentStatus(Infrastructure.Payment.MercadoPago.Model.WebhookNotification notification)
+        public ActionResult<bool> Update(Infrastructure.Payment.MercadoPago.Model.WebhookNotification notification)
         {
             try
             {
                 var payment = new Infrastructure.Payment.MercadoPago.MercadoPagoUseCase().GetPaymentStatus(notification);
                 if (payment.HasValue)
                 {
-                    return Ok(this._pedidoPagamentoUseCase.UpdatePaymentStatus(notification.data.pedido_id.Value, (Application.Enums.PagamentoStatus)payment.Value));
+                    return Ok(this._pedidoPagamentoUseCase.Update(notification.data.pedido_id.Value, (Application.Enums.PagamentoStatus)payment.Value));
                 }
                 else
                 {
