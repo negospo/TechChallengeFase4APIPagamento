@@ -100,13 +100,13 @@ namespace Tests
             //Arrange
             var pedidoId = 1;
             var status = Domain.Enums.PagamentoStatus.Aprovado;
-            _pedidoPagamentoRepoMock.Setup(s => s.UpdatePaymentStatus(pedidoId, status)).Returns(true);
+            _pedidoPagamentoRepoMock.Setup(s => s.Update(pedidoId, status)).Returns(true);
 
             //Act
-            var updated = _pedidoPagamentoRepoMock.Object.UpdatePaymentStatus(pedidoId, status);
+            var updated = _pedidoPagamentoRepoMock.Object.Update(pedidoId, status);
 
             //Assert
-            _pedidoPagamentoRepoMock.Verify(repo=>repo.UpdatePaymentStatus(pedidoId, status), Times.Once());
+            _pedidoPagamentoRepoMock.Verify(repo=>repo.Update(pedidoId, status), Times.Once());
             updated.Should().BeTrue();
         }
 

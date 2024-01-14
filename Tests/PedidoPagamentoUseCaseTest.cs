@@ -138,5 +138,24 @@ namespace Tests
            
             result.Should().BeTrue();
         }
+
+        [Fact]
+        public void ShouldUpdatePedidoPagamento()
+        {
+            // Arrange
+            var pedidoId = 1;
+
+            _pedidoPagamentoRepoMock.Setup(s => s.Update(
+                pedidoId, Domain.Enums.PagamentoStatus.Aprovado))
+                .Returns(true);
+
+            //Act
+            var result = _useCase.Update(pedidoId, PagamentoStatus.Aprovado);
+
+            //Assert
+            _pedidoPagamentoRepoMock.Verify(repo => repo.Update(
+                pedidoId, Domain.Enums.PagamentoStatus.Aprovado), Times.Once());
+            result.Should().BeTrue();
+        }
     }
 }
