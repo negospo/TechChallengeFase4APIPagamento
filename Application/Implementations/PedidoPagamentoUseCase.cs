@@ -22,7 +22,7 @@ namespace Application.Implementations
             throw new NotImplementedException();
         }
 
-        PedidoPagamento IPedidoPagamentoUseCase.Get(int pedidoId)
+        public PedidoPagamento Get(int pedidoId)
         {
             var result = this._pedidoPagamentoRepository.Get(pedidoId);
             if (result == null)
@@ -31,13 +31,13 @@ namespace Application.Implementations
             return result;
         }
 
-        IEnumerable<PedidoPagamento> IPedidoPagamentoUseCase.List(List<int> pedidoIds)
+        public IEnumerable<PedidoPagamento> List(List<int> pedidoIds)
         {
             var result = this._pedidoPagamentoRepository.List(pedidoIds);
             return result;
         }
 
-        bool IPedidoPagamentoUseCase.Save(DTOs.Imput.Pedido pedido)
+        public bool Save(DTOs.Imput.Pedido pedido)
         {
             var entity = new Domain.Entities.PedidoPagamento(
                 pedido.PedidoId.Value,
