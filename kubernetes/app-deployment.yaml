@@ -1,39 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: app-pagamento-deployment
   labels:
-    app: app
+    app: pagamento
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: app
+      app: pagamento
   template:
     metadata:
       labels:
-        app: app
+        app: pagamento
     spec:
       containers:
-        - name: app-container
-          image: 807550779778.dkr.ecr.us-east-1.amazonaws.com/fiap
+        - name: app-pagamento-container
+          image: 807550779778.dkr.ecr.us-east-1.amazonaws.com/fiap-pagamento
           ports:
             - containerPort: 80
           env:
             - name: POSTGRE_CONNECTION_STRING
               valueFrom:
                 secretKeyRef:
-                  name: fiap-opaque
+                  name: app-pagamento-opaque
                   key: POSTGRE_CONNECTION_STRING
             - name: ASPNETCORE_ENVIRONMENT
               valueFrom:
                 configMapKeyRef:
-                  name: app-config
+                  name: app-pagamento-config
                   key: ASPNETCORE_ENVIRONMENT
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: app-pagamento-config
 data:
   ASPNETCORE_ENVIRONMENT: "DEVELOPMENT"
