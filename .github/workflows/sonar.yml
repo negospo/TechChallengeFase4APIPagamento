@@ -43,6 +43,9 @@ jobs:
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
+      - name: Install Coverlet
+        run: dotnet tool install --global coverlet.console
+
       - name: Build and analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -51,5 +54,5 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"negospo_TechChallengeFase4APIPagamento" /o:"carlosmarcusfiap" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.cs.opencover.reportsPaths="coverage.xml"
           dotnet build --no-incremental
-          coverlet "./TestsBDD/bin/Debug/net6.0/TestsBDD.dll" --target "dotnet" --targetargs "test ./TestsBDD --no-build" -f opencover -o "coverage.xml"
+          coverlet.console "./TestsBDD/bin/Debug/net6.0/TestsBDD.dll" --target "dotnet" --targetargs "test ./TestsBDD --no-build" -f opencover -o "coverage.xml"
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
