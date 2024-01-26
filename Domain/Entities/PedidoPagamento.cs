@@ -18,7 +18,7 @@
             if (string.IsNullOrEmpty(this.Nome))
                 throw new CustomExceptions.BadRequestException("Nome não pode ser vazio");
 
-            if (string.IsNullOrEmpty(this.Nome))
+            if (string.IsNullOrEmpty(this.TokenCartao))
                 throw new CustomExceptions.BadRequestException("Token do cartão vazio");
 
             if (this.Valor <=0)

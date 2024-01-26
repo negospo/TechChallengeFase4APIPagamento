@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace TestsBDD.Features
+namespace TestsBDD.Features.UseCase
 {
     using TechTalk.SpecFlow;
     using System;
@@ -28,14 +28,14 @@ namespace TestsBDD.Features
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "PedidoPagamentoUseCase.feature"
+#line 1 "PedidoPagamento.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features", "Gerenciamento de Pedidos de Pagamento", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Features/UseCase", "Gerenciamento de Pedidos de Pagamento", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -154,12 +154,12 @@ namespace TestsBDD.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Salvar um novo pedido de pagamento")]
-        public virtual void SalvarUmNovoPedidoDePagamento()
+        [NUnit.Framework.DescriptionAttribute("Obter um pedido de pagamento inválido")]
+        public virtual void ObterUmPedidoDePagamentoInvalido()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Salvar um novo pedido de pagamento", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Obter um pedido de pagamento inválido", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 16
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -181,25 +181,25 @@ namespace TestsBDD.Features
             {
                 this.ScenarioStart();
 #line 17
-    testRunner.Given("Eu tenho um novo pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("O pedido de pagamento com ID 300 não existe", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 18
-    testRunner.When("Eu salvo o pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("Eu tento obter o pedido de pagamento com ID 300", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
-    testRunner.Then("O pedido de pagamento é salvo com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+    testRunner.Then("Uma exceção de \'NotFoundException\' deve ser lançada", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Atualizar o status de um pedido de pagamento")]
-        public virtual void AtualizarOStatusDeUmPedidoDePagamento()
+        [NUnit.Framework.DescriptionAttribute("Salvar um novo pedido de pagamento")]
+        public virtual void SalvarUmNovoPedidoDePagamento()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Atualizar o status de um pedido de pagamento", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Salvar um novo pedido de pagamento", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 22
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -221,12 +221,52 @@ namespace TestsBDD.Features
             {
                 this.ScenarioStart();
 #line 23
-    testRunner.Given("Eu tenho um ID de pedido e um novo status de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+    testRunner.Given("Eu tenho um novo pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 24
-    testRunner.When("Eu atualizo o status do pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+    testRunner.When("Eu salvo o pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 25
+    testRunner.Then("O pedido de pagamento é salvo com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Atualizar o status de um pedido de pagamento")]
+        public virtual void AtualizarOStatusDeUmPedidoDePagamento()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Atualizar o status de um pedido de pagamento", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 28
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 29
+    testRunner.Given("Eu tenho um ID de pedido e um novo status de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 30
+    testRunner.When("Eu atualizo o status do pedido de pagamento", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 31
     testRunner.Then("O status do pedido de pagamento é atualizado com sucesso", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
